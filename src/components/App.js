@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {handleInitialData} from '../actions/shared'
-
+import QuestionList from './QuestionList';
+import Login from './Login';
+import Nav from './Nav'
 
 
 class App extends Component {
@@ -10,13 +12,18 @@ class App extends Component {
     }
 
     render() {
+        const {authedUser} = this.props
 
         return (
             <div >
-                Starter Code
+            <Nav />
+                {authedUser?<QuestionList />:<Login />}
+                
             </div>
         );
     }
 }
-
-export default connect()(App);
+function mapStateToProps({ authedUser}) {
+    return { authedUser }
+}
+export default connect(mapStateToProps)(App);
