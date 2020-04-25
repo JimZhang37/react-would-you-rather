@@ -7,8 +7,11 @@ export function formatQuestion({ question, user }) {
 }
 
 export function seperateQuestions({ authedUser, questions, users }) {
-    const answered = questions.map(question => users[authedUser]['answers'].includes(question.id))
-    const unanswered = questions.map(question=> !users[authedUser]['answers'].includes(question.id))
+    const qIds = Object.keys(questions)
+    const qq = Object.keys(users[authedUser]['answers'])
+    console.log(qq)
+    const answered = qIds.filter(qId => qq.includes(qId))
+    const unanswered = qIds.filter(qId=> !qq.includes(qId))
     return {
         answered,
         unanswered

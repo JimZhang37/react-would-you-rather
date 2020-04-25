@@ -12,7 +12,9 @@ class Question extends Component {
         return (
             <div className='tweet'>
                 <img className='avatar'
-                src={avartarURL}/>
+                src={avartarURL}
+                
+                />
        
                 <div>
                     <div>
@@ -32,11 +34,11 @@ class Question extends Component {
     }
 }
 
-function mapStateToProps({ questions, users }, { id }) {
+function mapStateToProps({ questions, users, authedUser }, { id }) {
     const question = questions[id]
-    const a = users['sarahedo']
- 
+    const a = users[authedUser]
+    console.log('avartar', a.avatarURL)
 
-    return { avartarURL:"aaa",question }
+    return { avartarURL:a.avartarURL,question }
 }
 export default connect(mapStateToProps)(Question)

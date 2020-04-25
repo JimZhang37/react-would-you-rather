@@ -1,58 +1,46 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import { authUser } from "../actions/authedUser";
+import { useHistory, useLocation } from 'react-router-dom'
 
+function Login({ userIds, dispatch, users }) {
 
-class Login extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            user: ''
-        }
-        this.handleSelect = this.handleSelect.bind(this)
-    }
+    let history = useHistory();
+    let location = useLocation();
+    const [user, setUser] = useState('');
 
-    onsubmit() {
-        const { dispatch, userIds } = this.props
-        if (userIds.includes(this.state.user)) {
-   
-            dispatch(authUser(this.state.user))
+    let { from } = location.state || { from: { pathname: "/" } };
+    let login = (e) => {
+        if (userIds.includes(user)) {
+            dispatch(authUser(user))
+            console.log(from, "doesn't exist")
+            history.replace(from);
         }
         else {
-            console.log(this.state.user, "doesn't exist")
+            console.log(user, "doesn't exist")
         }
+    };
 
-    }
-    handleSelect(e) {
-        // console.log(e.target.value)
-        const value = e.target.value
-        this.setState((state, props) => {
-            return {user:value};
-          });
-    }
-    render() {
-        const { userIds, users } = this.props
+    return <div>
+        <ul>
+            {userIds.map(id => <li key={id}>{id}</li>)}
+        </ul>
 
-        return <div>
-            <ul>
-                {userIds.map(id => <li key={id}>{id}</li>)}
-            </ul>
+        <select value={user} onChange={(e) => (setUser(e.target.value))}>
+            {userIds.map(id =><option value={id} key={id}>{users[id].name}</option>)}
+        </select>
+        <button onClick={login}>Login In</button>
+    </div>
 
-            <select value={this.state.user} onChange={(e)=> this.handleSelect(e)}>
-                {userIds.map(id =>
-                    <option value={id} key={id}>{users[id].name}</option>
-                )}
-            </select>
-            <button onClick={(e) => this.onsubmit()}>Login In</button>
-        </div>
-
-    }
 }
-function mapStateToProps({ users }) {
+
+
+function mapStateToProps({ users }, props) {
     const userIds = Object.keys(users)
 
     return {
-        userIds, users
+        userIds, users,
+        props
 
     }
 }

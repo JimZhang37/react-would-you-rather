@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authUser } from '../actions/authedUser'
-
+import {NavLink} from 'react-router-dom'
+import Logout from "./Logout";
 class Nav extends Component {
 
     handleSubmit() {
@@ -13,14 +14,11 @@ class Nav extends Component {
         const { authedUser } = this.props
         return (
         <div>
-            <div>
-                {authedUser}
-            </div>
-            {authedUser?
-            <div>
-                <button onClick={(e) => this.handleSubmit()}>log out</button>
-            </div>
-            :''}
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/new'>New</NavLink>
+            <NavLink to='/users'>Users</NavLink>
+
+            <Logout></Logout>
         </div>)
     }
 }
