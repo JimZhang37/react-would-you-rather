@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import QuestionList from './QuestionList';
@@ -16,27 +16,27 @@ class App extends Component {
 
     render() {
         const { authedUser, match } = this.props
-        const {url, path} = match
-        console.log('url', match)
+        // const {url, path} = match
+        // console.log('url', match)
         return (
             <Router>
-                <div>
+                <Fragment>
                     <Nav />
                     <Switch>
                         <PrivateRoute exact path='/'>
                             <QuestionAll />
                         </PrivateRoute>
-                        <PrivateRoute exact path='/new'>
+                        {/* <PrivateRoute path='/new'>
                             <New />
                         </PrivateRoute>
-                        <PrivateRoute exact path='/question/:id'>
+                        <PrivateRoute path='/question/:id'>
                             <Question />
-                        </PrivateRoute>
+                        </PrivateRoute> */}
                         <Route path='/login'>
                             <Login />
                         </Route>
                     </Switch>
-                </div>
+                </Fragment>
             </Router>
 
 
