@@ -23,8 +23,11 @@ class App extends Component {
                 <Fragment>
                     <Nav />
                     <Switch>
-                        <PrivateRoute exact path='/'>
+                        <PrivateRoute  path='/list'>
                             <QuestionAll />
+                        </PrivateRoute>
+                        <PrivateRoute exact path='/'>
+                            <Redirect to='/list'></Redirect>
                         </PrivateRoute>
                         {/* <PrivateRoute path='/new'>
                             <New />

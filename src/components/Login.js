@@ -8,8 +8,8 @@ function Login({ userIds, dispatch, users }) {
     let history = useHistory();
     let location = useLocation();
     const [user, setUser] = useState('');
-
-    let { from } = location.state || { from: { pathname: "/" } };
+//location.state ||
+    let { from } =  { from: { pathname: "/" } };
     let login = (e) => {
         if (userIds.includes(user)) {
             dispatch(authUser(user))
