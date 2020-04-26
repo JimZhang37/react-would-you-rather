@@ -7,6 +7,7 @@ import Nav from './Nav'
 import {withRouter, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import QuestionAll from './QuestionAll'
 import PrivateRoute from './PrivateRoute';
+import QuestionView from './QuestionView'
 class App extends Component {
     componentDidMount() {
 
@@ -31,10 +32,12 @@ class App extends Component {
                         </PrivateRoute>
                         {/* <PrivateRoute path='/new'>
                             <New />
-                        </PrivateRoute>
-                        <PrivateRoute path='/question/:id'>
-                            <Question />
                         </PrivateRoute> */}
+                        {/* <Route path='/question/:id' component={QuestionView}> */}
+                        <PrivateRoute exact path='/question/:id'>
+                            <QuestionView />
+                        </PrivateRoute>
+                        {/* </Route> */}
                         <Route path='/login'>
                             <Login />
                         </Route>
@@ -49,8 +52,8 @@ class App extends Component {
     }
 }
 function mapStateToProps({ authedUser }, { match }) {
-    console.log("authedUser is: ", authedUser)
-    console.log("match: ", match)
+    // console.log("authedUser is: ", authedUser)
+    // console.log("match: ", match)
     return { authedUser }
 }
 export default connect(mapStateToProps)(App);

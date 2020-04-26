@@ -10,11 +10,11 @@ export default class QuestionList extends Component {
 
     render() {
         const {ids} = this.props
-        console.log(ids, "this is ids")
+        // console.log(ids, "this is ids")
         return (
 
                 <div className='dashboard-list'>
-                    { ids.map(id => <Question key={id} id={id}></Question>)} }
+                    { ids.map(id => <Question key={id} id={id}></Question>)} 
                 </div>
 
         )

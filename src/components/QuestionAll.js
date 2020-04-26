@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 function QuestionAll({ answeredIds, unanswerIds, match }) {
    
 
-    console.log(match, answeredIds, unanswerIds)
+    // console.log(match, answeredIds, unanswerIds)
     const {url, path } = match
     return (
         <div>
@@ -34,7 +34,7 @@ function mapStateToProps({ questions, users, authedUser }) {
 
     const user = users[authedUser]
     let answeredIds = Object.keys(user.answers)
-    console.log("aaaanswed", answeredIds)
+    // console.log("aaaanswed", answeredIds)
     const allIds = Object.keys(questions)
     let unansweredIds = allIds.filter(it => !answeredIds.includes(it))
     return {

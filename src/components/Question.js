@@ -1,31 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import {Link} from 'react-router-dom'
 
 class Question extends Component {
 
     render() {
-        const { question,avartarURL} = this.props
-
+        const { question,avatarURL} = this.props
+        // console.log(avartarURL,'avartal url')
 
         
         return (
             <div className='tweet'>
                 <img className='avatar'
-                src={avartarURL}
+                src={avatarURL}
                 
                 />
        
                 <div>
                     <div>
-                        this question's id is {question.author}
+                         {question.author} asks:
                     </div>
                     <div>
-                        this question's icon
+                        Would You Rather...?
                     </div>
-                    <div>
-                        this question's button
-                    </div>
+                    <Link to={`/question/${question.id}`}>
+                        <button >View Poll</button>
+                    </Link>
                 </div>
 
             </div>
@@ -34,11 +34,11 @@ class Question extends Component {
     }
 }
 
-function mapStateToProps({ questions, users, authedUser }, { id }) {
+function mapStateToProps({ questions, users }, { id }) {
     const question = questions[id]
-    const a = users[authedUser]
-    console.log('avartar', a.avatarURL)
+    const a = users[question.author]
+    // console.log('avartar', a,a.avartarURL)
 
-    return { avartarURL:a.avartarURL,question }
+    return { avatarURL:a.avatarURL,question }
 }
 export default connect(mapStateToProps)(Question)

@@ -58,7 +58,7 @@ function Topics() {
   // relative to the parent route, while the `url` lets
   // us build relative links.
   let { path, url } = useRouteMatch();
-    console.log(url, path)
+    // console.log(url, path)
   return (
     <div>
       <h2>Topics</h2>

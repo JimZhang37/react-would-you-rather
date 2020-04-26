@@ -7,7 +7,7 @@ class Nav extends Component {
 
     handleSubmit() {
         const { dispatch } = this.props
-        console.log("log out")
+        // console.log("log out")
         dispatch(authUser(null))
     }
     render() {

@@ -9,11 +9,11 @@ function Login({ userIds, dispatch, users }) {
     let location = useLocation();
     const [user, setUser] = useState('');
 //location.state ||
-    let { from } =  { from: { pathname: "/" } };
+    let { from } =  location.state ||{ from: { pathname: "/" } };
     let login = (e) => {
         if (userIds.includes(user)) {
             dispatch(authUser(user))
-            console.log(from, "doesn't exist")
+            // console.log(from, "doesn't exist")
             history.replace(from);
         }
         else {
