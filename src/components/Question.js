@@ -8,14 +8,10 @@ class Question extends Component {
         const { question,avatarURL} = this.props
         // console.log(avartarURL,'avartal url')
 
-        
         return (
             <div className='tweet'>
                 <img className='avatar'
-                src={avatarURL}
-                
-                />
-       
+                src={avatarURL}/>
                 <div>
                     <div>
                          {question.author} asks:
@@ -27,7 +23,6 @@ class Question extends Component {
                         <button >View Poll</button>
                     </Link>
                 </div>
-
             </div>
 
         )

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './components/App';
+import App from './components/App';
 // import Appa from './components/example'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -9,7 +9,7 @@ import reducers from './reducers'
 import middleware from './middleware'
 import { Router } from 'react-router-dom';
 
-import App from './components/A'
+// import App from './components/A'
 const store = createStore(reducers, middleware)
 
 ReactDOM.render(

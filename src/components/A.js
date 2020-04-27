@@ -1,24 +1,35 @@
 import React, {Component} from 'react'
 import UserList from './UserList'
+import OptionStat from './OptionStat'
+import QuestionResult from './QuestionResult'
 import {users,questions as Qs } from '../utils/_DATA'
 class A extends Component {
 
 
     
     render(){
-        const uIds = Object.keys(users)
-        const {id, name, avatarURL, answers, questions} = users[uIds[0]]
-        const user = {
-            
-            name,
-            rank: 1,
-            avatarURL,
-            numAnswered: 3,
-            numCreated: questions.length,
+        const qIds = Object.keys(Qs)
+        const {id, author, optionOne, optionTwo} = Qs[qIds[0]]
+        const countOne = optionOne.votes.length
+        const countTwo = optionTwo.votes.length
+
+        const avatarURL = 'http://i.pravatar.cc/400?img=70'
+        const option1 = {
+            text: optionOne.text,
+            count: countOne,
+            total: countOne+countTwo,
+            yourChoice: true,
         }
+        const option2 = {
+            text: optionTwo.text,
+            count: countTwo,
+            total: countOne+countTwo,
+            yourChoice: false,
+        }
+
         return (
             <div>
-                <UserList />
+                <QuestionResult value={{author, avatarURL, option1, option2}} />
 
             </div>
         )

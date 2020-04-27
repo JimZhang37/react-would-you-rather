@@ -7,7 +7,9 @@ function Login({ userIds, dispatch, users }) {
 
     let history = useHistory();
     let location = useLocation();
-    const [user, setUser] = useState('');
+    const defaultUser = userIds[1]
+    const [user, setUser] = useState('tylermcginnis');
+    console.log('user',user,defaultUser)
 //location.state ||
     let { from } =  location.state ||{ from: { pathname: "/" } };
     let login = (e) => {

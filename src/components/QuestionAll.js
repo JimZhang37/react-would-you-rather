@@ -12,17 +12,14 @@ function QuestionAll({ answeredIds, unanswerIds, match }) {
         <div>
             <div>
 
-                <NavLink to={`${url}/answered`}>
+                <NavLink to={`${url}`}>
                     Answered
                     </NavLink>
                 <NavLink to={`${url}/unanswered`}>Un Answered</NavLink>
             </div>
-            {/* <QuestionList ids={answeredIds} />)} /> */}
             <Switch>
-
-                <Route path={`${path}/answered`} render={() => (<QuestionList ids={answeredIds} />)} />
+                <Route exact path={`${path}`} render={() => (<QuestionList ids={answeredIds} />)} />
                 <Route path={`${path}/unanswered`} render={() => (<QuestionList ids={unanswerIds} />)} />
-
             </Switch>
         </div>
 

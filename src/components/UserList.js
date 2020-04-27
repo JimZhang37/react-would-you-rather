@@ -21,7 +21,7 @@ class UserList extends Component {
 
         return (
             <div>
-                <h3 className='center'>Your Timeline</h3>
+                <h3 className='center'>Leader Board</h3>
                 <ul className='dashboard-list'>
                     {usersFormated.map((id) => (
                         <li key={id}>

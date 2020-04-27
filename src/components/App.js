@@ -8,6 +8,7 @@ import {withRouter, BrowserRouter as Router, Route, Redirect, Switch } from 'rea
 import QuestionAll from './QuestionAll'
 import PrivateRoute from './PrivateRoute';
 import QuestionView from './QuestionView'
+import UserList from './UserList'
 class App extends Component {
     componentDidMount() {
 
@@ -36,6 +37,9 @@ class App extends Component {
                         {/* <Route path='/question/:id' component={QuestionView}> */}
                         <PrivateRoute exact path='/question/:id'>
                             <QuestionView />
+                        </PrivateRoute>
+                        <PrivateRoute exact path='/users'>
+                            <UserList />
                         </PrivateRoute>
                         {/* </Route> */}
                         <Route path='/login'>
