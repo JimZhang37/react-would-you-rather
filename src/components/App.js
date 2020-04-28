@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import QuestionList from './QuestionList';
+// import QuestionList from './QuestionList';
 import Login from './Login';
 import Nav from './Nav'
-import {withRouter, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import QuestionAll from './QuestionAll'
 import PrivateRoute from './PrivateRoute';
 import QuestionView from './QuestionView'
 import UserList from './UserList'
+import QuestionNew from './QuestionNew'
+import NotFound from './NotFound'
 class App extends Component {
     componentDidMount() {
 
@@ -17,7 +19,7 @@ class App extends Component {
     }
 
     render() {
-        const { authedUser, match } = this.props
+        // const { authedUser, match } = this.props
         // const {url, path} = match
         // console.log('url', match)
         return (
@@ -35,11 +37,17 @@ class App extends Component {
                             <New />
                         </PrivateRoute> */}
                         {/* <Route path='/question/:id' component={QuestionView}> */}
-                        <PrivateRoute exact path='/question/:id'>
+                        <PrivateRoute exact path='/questions/:question_id'>
                             <QuestionView />
                         </PrivateRoute>
-                        <PrivateRoute exact path='/users'>
+                        <PrivateRoute exact path='/leaderboard'>
                             <UserList />
+                        </PrivateRoute>
+                        <PrivateRoute path='/add'>
+                            <QuestionNew />
+                        </PrivateRoute>
+                        <PrivateRoute path='/not_found'>
+                            <NotFound />
                         </PrivateRoute>
                         {/* </Route> */}
                         <Route path='/login'>

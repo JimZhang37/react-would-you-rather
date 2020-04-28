@@ -11,12 +11,12 @@ class Nav extends Component {
         dispatch(authUser(null))
     }
     render() {
-        const { authedUser } = this.props
+        // const { authedUser } = this.props
         return (
         <div>
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='/new'>New</NavLink>
-            <NavLink to='/users'>Users</NavLink>
+            <NavLink to='/add'>New</NavLink>
+            <NavLink to='/leaderboard'>Users</NavLink>
 
             <Logout></Logout>
         </div>)

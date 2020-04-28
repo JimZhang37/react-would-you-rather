@@ -11,6 +11,7 @@ class Question extends Component {
         return (
             <div className='tweet'>
                 <img className='avatar'
+                alt=''
                 src={avatarURL}/>
                 <div>
                     <div>
@@ -19,7 +20,7 @@ class Question extends Component {
                     <div>
                         Would You Rather...?
                     </div>
-                    <Link to={`/question/${question.id}`}>
+                    <Link to={`/questions/${question.id}`}>
                         <button >View Poll</button>
                     </Link>
                 </div>

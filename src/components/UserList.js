@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import User from './User'
-import { users, questions as Qs } from '../utils/_DATA'
+import { users} from '../utils/_DATA'
 class UserList extends Component {
 
 
@@ -24,7 +24,7 @@ class UserList extends Component {
                 <h3 className='center'>Leader Board</h3>
                 <ul className='dashboard-list'>
                     {usersFormated.map((id) => (
-                        <li key={id}>
+                        <li key={id.rank}>
                             <User user={id} />
                         </li>
                     ))}

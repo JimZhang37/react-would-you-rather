@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, NavLink, Route, useRouteMatch, useHistory, useLocation, Switch } from 'react-router-dom'
+import { withRouter, NavLink, Route,  Switch } from 'react-router-dom'
 import QuestionList from './QuestionList'
 import { connect } from 'react-redux'
 
@@ -12,14 +12,14 @@ function QuestionAll({ answeredIds, unanswerIds, match }) {
         <div>
             <div>
 
-                <NavLink to={`${url}`}>
+                <NavLink to={`${url}/answered`}>
                     Answered
                     </NavLink>
-                <NavLink to={`${url}/unanswered`}>Un Answered</NavLink>
+                <NavLink to={`${url}`}>Un Answered</NavLink>
             </div>
             <Switch>
-                <Route exact path={`${path}`} render={() => (<QuestionList ids={answeredIds} />)} />
-                <Route path={`${path}/unanswered`} render={() => (<QuestionList ids={unanswerIds} />)} />
+                <Route exact path={`${path}/answered`} render={() => (<QuestionList ids={answeredIds} />)} />
+                <Route path={`${path}`} render={() => (<QuestionList ids={unanswerIds} />)} />
             </Switch>
         </div>
 

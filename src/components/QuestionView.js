@@ -1,15 +1,26 @@
-import React, { Component, useState } from "react"
+import React, {  useState } from "react"
 import { handleSaveQuestionAnswer } from '../actions/questions'
 import { connect } from 'react-redux'
 import QuestionResult from './QuestionResult'
-function QuestionView({user,question, dispatch, hasAnswered, id, author, option1, option2, answer, authedUser }) {
+import { Redirect } from "react-router-dom"
+function QuestionView({user,question, dispatch, hasAnswered, id,  answer, authedUser }) {
     const [choice, setChoice] = useState('optionOne')
+    if(typeof question === "undefined"){
+        return(
+            <Redirect to='/not_found' />
+        )
+    }
+    const author = question.author
+    
+    const option1 = question.optionOne.text
+    const option2 = question.optionTwo.text
+    
     const handleChange= (e)=>{
         setChoice(e.target.value)
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log(choice)
+        // console.log(choice)
         dispatch(handleSaveQuestionAnswer(authedUser, id, choice))
 
     }
@@ -30,7 +41,7 @@ function QuestionView({user,question, dispatch, hasAnswered, id, author, option1
             total: countOne+countTwo,
             yourChoice: false,
         }
-        console.log(option11,'option11')
+        // console.log(option11,'option11')
         return (
 
             <QuestionResult value = {{author, option11, option21, avatarURL}}/>
@@ -50,7 +61,7 @@ function QuestionView({user,question, dispatch, hasAnswered, id, author, option1
                     onChange={handleChange}
                     name='choice'
                 />
-                <label for='option1'>{option1}</label>
+                <label >{option1}</label>
                 <input
                     type='radio'
                     id='option2'
@@ -60,7 +71,7 @@ function QuestionView({user,question, dispatch, hasAnswered, id, author, option1
                     onChange={handleChange}
                     name='choice'
                 />
-                <label for='option2'>{option2}</label>
+                <label >{option2}</label>
                 <button type="submit">Submit</button>
             </form>
    
@@ -77,15 +88,14 @@ function mapStateToProps({ questions, users, authedUser }, { id }) {
     const hasAnswered = Object.keys(user.answers).includes(id)
     const answer = hasAnswered ? user.answers[id] : null
 
-    console.log('answer', answer, user, id)
+    // console.log('answer', answer, user, id)
     const question = questions[id]
-
+    // console.log(question)
     return {
         hasAnswered,
-        author: question.author,
+        
         id,
-        option1: question.optionOne.text,
-        option2: question.optionTwo.text,
+        
         answer,
         authedUser,
         user,

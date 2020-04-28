@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import {connect } from 'react-redux'
 function PrivateRoute({ children, authedUser,path,  ...rest }) {
-    const id = rest && rest.computedMatch && rest.computedMatch.params && rest.computedMatch.params.id ? rest.computedMatch.params.id: ''
+    const id = rest && rest.computedMatch && rest.computedMatch.params && rest.computedMatch.params.question_id ? rest.computedMatch.params.question_id: ''
     
     const newChildren = React.Children.map(children, child => React.cloneElement(child,{id}))
     // console.log('new children', newChildren, 'param', match?match.param.id:'')

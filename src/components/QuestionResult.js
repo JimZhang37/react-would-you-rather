@@ -12,6 +12,7 @@ function QuestionResult(props){
             <div className='tweet'>
                 <img 
                 src={avatarURL}
+                alt=''
                 className='avatar' />
 
                 <div className='tweet-info'>

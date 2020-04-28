@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import Question from './Question'
-import { seperateQuestions } from '../utils/helper'
+// import { seperateQuestions } from '../utils/helper'
 
 export default class QuestionList extends Component {
 

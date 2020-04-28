@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { authUser } from "../actions/authedUser";
 import { useHistory, useLocation } from 'react-router-dom'
@@ -7,9 +7,9 @@ function Login({ userIds, dispatch, users }) {
 
     let history = useHistory();
     let location = useLocation();
-    const defaultUser = userIds[1]
+    // const defaultUser = userIds[1]
     const [user, setUser] = useState('tylermcginnis');
-    console.log('user',user,defaultUser)
+    // console.log('user',user,defaultUser)
 //location.state ||
     let { from } =  location.state ||{ from: { pathname: "/" } };
     let login = (e) => {

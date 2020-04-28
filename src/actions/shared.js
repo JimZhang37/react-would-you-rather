@@ -1,6 +1,6 @@
 import {getInitialData} from '../utils/api'
-import {receiveQuestions} from './questions'
-import {receivUsers} from './users'
+// import {receiveQuestions} from './questions'
+// import {receivUsers} from './users'
 
 export const RECEIVE_DATA ='RECEIVE_DATA'
 
