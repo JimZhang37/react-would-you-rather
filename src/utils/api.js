@@ -12,3 +12,11 @@ export function getInitialData(){
     }))
 }
 
+export function authorizeUser(user){
+    return _getUsers().then((users)=>
+        Object.values(users).some(it => it.id === user)
+    )
+
+
+}
+

@@ -11,14 +11,14 @@ function Logout({authedUser, dispatch}){
         <button onClick={() => {
             dispatch(authUser(null))
             history.push("/")
-          
-        }}
-        >Sign Out</button>
+        }}>
+        Sign Out
+        </button>
         
         </p>
     )
     :
-    (<p>You are not logged inß</p>)
+    (<p>You are not logged in!</p>)
 
 
 
@@ -28,7 +28,6 @@ function mapStateToProps({ authedUser }) {
 
     return {
         authedUser
-
     }
 }
 export default connect(mapStateToProps)(Logout)

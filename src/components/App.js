@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 // import QuestionList from './QuestionList';
 import Login from './Login';
-import Nav from './Nav'
+import Navigation from './Nav'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import QuestionAll from './QuestionAll'
 import PrivateRoute from './PrivateRoute';
@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <Router>
                 <Fragment>
-                    <Nav />
+                    <Navigation />
                     <Switch>
                         <PrivateRoute  path='/list'>
                             <QuestionAll />

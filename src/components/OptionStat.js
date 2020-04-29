@@ -2,7 +2,6 @@ import React from 'react'
 import { LinearProgress } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import ProgressBar from 'react-bootstrap/ProgressBar'
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
