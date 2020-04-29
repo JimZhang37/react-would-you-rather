@@ -1,7 +1,8 @@
 import React from 'react'
 
 function User(props){
-    const {name, rank, avatarURL, numAnswered, numCreated, } = props.user
+    const {name, avatarURL, numAnswered, numCreated, } = props.user
+    const rank = props.rank
     return (
         <div className='tweet'>
             <div>
@@ -14,7 +15,6 @@ function User(props){
                 <div>Created Questions: {numCreated}</div>
                 <div>Score: {numAnswered + numCreated}</div>
             </div>
-
         </div>
     )
 }

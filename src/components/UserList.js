@@ -1,37 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
 import User from './User'
-import { users} from '../utils/_DATA'
-class UserList extends Component {
+import { connect } from 'react-redux'
 
 
+function UserList({ users }) {
+    let usersFormated = Object.values(users)
+    usersFormated
+        .map((user) => {
+            const numAnswered = Object.keys(user.answers).length
+            const numCreated = user.questions.length
+            user.numAnswered = numAnswered
+            user.numCreated = numCreated
+            user.score = numAnswered + numCreated
+            return user
+        })
 
-    render() {
-        const uIds = Object.keys(users)
-        let usersFormated = uIds.map(id => ({
-            name: users[id].name,
-            avatarURL: users[id].avatarURL,
-            numAnswered: Object.keys(users[id].answers).length,
-            numCreated: users[id].questions.length,
-            
-        })).sort((a, b) => b.numAnswered +b.numCreated - a.numAnswered -a.numCreated)
+    usersFormated.sort((a, b) => b.score  - a.score )
+       
 
-        for(let i= 0; i < usersFormated.length; i++){
-            usersFormated[i].rank = i+1
-        }
 
-        return (
-            <div>
-                <h3 className='center'>Leader Board</h3>
-                <ul className='dashboard-list'>
-                    {usersFormated.map((id) => (
-                        <li key={id.rank}>
-                            <User user={id} />
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h3 className='center'>Leader Board</h3>
+            <ul className='dashboard-list'>
+                {usersFormated.map((user, index) => (
+                    <li key={user.name}>
+                        <User user={user} rank = {index+1} />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
 }
 
-export default UserList
+
+function mapStateToProps({ users }) {
+    return { users }
+}
+
+export default connect(mapStateToProps)(UserList)
