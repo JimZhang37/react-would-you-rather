@@ -6,7 +6,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 function Login({ usersArray, authedUser, dispatch }) {
     let history = useHistory();
     let location = useLocation();
-    const [user, setUser] = useState('tylermcginnis');
+    const [user, setUser] = useState('');
     let { from } = location.state || { from: { pathname: "/" } };
     
     function login(e) {
@@ -20,6 +20,7 @@ function Login({ usersArray, authedUser, dispatch }) {
     return (
         <div>
             <select value={user} onChange={(e) => (setUser(e.target.value))}>
+                <option value="" disabled>Select your option</option>
                 {usersArray.map(user => <option value={user.id} key={user.id}>{user.name}</option>)}
             </select>
             <button onClick={(e)=>login(e)}>Login In</button>
