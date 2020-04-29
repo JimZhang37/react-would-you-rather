@@ -9,7 +9,7 @@ function Login({ usersArray, authedUser, dispatch }) {
     const [user, setUser] = useState('tylermcginnis');
     let { from } = location.state || { from: { pathname: "/" } };
     
-    let login = (e) => {
+    function login(e) {
         dispatch(handleAuthUser(user))
         history.replace(from);
     };
@@ -22,7 +22,7 @@ function Login({ usersArray, authedUser, dispatch }) {
             <select value={user} onChange={(e) => (setUser(e.target.value))}>
                 {usersArray.map(user => <option value={user.id} key={user.id}>{user.name}</option>)}
             </select>
-            <button onClick={login}>Login In</button>
+            <button onClick={(e)=>login(e)}>Login In</button>
         </div>)
 
 }
