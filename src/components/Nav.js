@@ -5,8 +5,6 @@ import { authUser } from '../actions/authedUser'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
-
-
 function Navigation() {
     let history = useHistory()
     const dispatch = useDispatch()
