@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux'
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 // import QuestionList from './QuestionList';
 import Login from './Login';
@@ -11,61 +11,43 @@ import QuestionView from './QuestionView'
 import UserList from './UserList'
 import QuestionNew from './QuestionNew'
 import NotFound from './NotFound'
-class App extends Component {
-    componentDidMount() {
 
-        this.props.dispatch(handleInitialData())
+function App() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(handleInitialData())
+    }, [dispatch])
 
-    }
-
-    render() {
-        // const { authedUser, match } = this.props
-        // const {url, path} = match
-        // console.log('url', match)
-        return (
-            <Router>
-                <Fragment>
-                    <Navigation />
-                    <Switch>
-                        <PrivateRoute  path='/list'>
-                            <QuestionAll />
-                        </PrivateRoute>
-                        <PrivateRoute exact path='/'>
-                            <Redirect to='/list'></Redirect>
-                        </PrivateRoute>
-                        {/* <PrivateRoute path='/new'>
-                            <New />
-                        </PrivateRoute> */}
-                        {/* <Route path='/question/:id' component={QuestionView}> */}
-                        <PrivateRoute exact path='/questions/:question_id'>
-                            <QuestionView />
-                        </PrivateRoute>
-                        <PrivateRoute exact path='/leaderboard'>
-                            <UserList />
-                        </PrivateRoute>
-                        <PrivateRoute path='/add'>
-                            <QuestionNew />
-                        </PrivateRoute>
-                        <PrivateRoute path='/not_found'>
-                            <NotFound />
-                        </PrivateRoute>
-                        {/* </Route> */}
-                        <Route path='/login'>
-                            <Login />
-                        </Route>
-                    </Switch>
-                </Fragment>
-            </Router>
-
-
-
-
-        );
-    }
+    return (
+        <Router>
+            <Fragment>
+                <Navigation />
+                <Switch>
+                    <PrivateRoute path='/list'>
+                        <QuestionAll />
+                    </PrivateRoute>
+                    <PrivateRoute exact path='/'>
+                        <Redirect to='/list'></Redirect>
+                    </PrivateRoute>
+                    <PrivateRoute exact path='/questions/:question_id'>
+                        <QuestionView />
+                    </PrivateRoute>
+                    <PrivateRoute exact path='/leaderboard'>
+                        <UserList />
+                    </PrivateRoute>
+                    <PrivateRoute path='/add'>
+                        <QuestionNew />
+                    </PrivateRoute>
+                    <PrivateRoute path='/not_found'>
+                        <NotFound />
+                    </PrivateRoute>
+                    <Route path='/login'>
+                        <Login />
+                    </Route>
+                </Switch>
+            </Fragment>
+        </Router>
+    );
 }
-function mapStateToProps({ authedUser }, { match }) {
-    // console.log("authedUser is: ", authedUser)
-    // console.log("match: ", match)
-    return { authedUser }
-}
-export default connect(mapStateToProps)(App);
+
+export default App;

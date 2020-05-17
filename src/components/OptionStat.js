@@ -8,6 +8,16 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(2),
         },
     },
+    yourChoice:{
+        width:'100%',
+        border:'1px solid #dad7d7;',
+        background: 'yellow'
+
+
+    },
+    notYourChoice:{
+
+    }
 }));
 function OptionStat(props) {
     const { text, count, total, yourChoice } = props.option
@@ -15,7 +25,7 @@ function OptionStat(props) {
     const v =100* count/total
     return (
         <div className='option'>
-            <div>
+            <div className={yourChoice?classes.yourChoice:classes.notYourChoice}>
                 <div>{text}</div>
                 <div>It's {yourChoice ? '' : 'not'} your choice</div>
                 <div className={classes.root}>
